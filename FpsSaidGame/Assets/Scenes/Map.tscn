@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Materials/Maps/Box.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Materials/Maps/Ground_spatialmaterial.tres" type="Material" id=2]
+[ext_resource path="res://Addons/Player/Player.tscn" type="PackedScene" id=3]
+
+[node name="Map" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+jumpForce = 7.8
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+collision_mask = 0
+
+[node name="Ground" type="CSGBox" parent="CSGCombiner"]
+width = 40.0
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -83.4573 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.906551, 0, 0.422096, 0, 1, 0, -0.422096, 0, 0.906551, -17.2568, 0, -160.219 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.587489, 0, 0.809232, 0, 1, 0, -0.809232, 0, 0.587489, -65.9226, 0, -218.847 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground5" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.672573, 0, 0.74003, 0, 1, 0, -0.74003, 0, -0.672573, -119.194, 0, -215.879 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground6" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.99643, 0, 0.0844257, 0, 1, 0, -0.0844257, 0, -0.99643, -150.555, 0, -150.98 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground7" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.928861, 0, -0.370428, 0, 1, 0, 0.370428, 0, -0.928861, -138.737, 0, -72.8713 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground8" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.803129, 0, -0.595804, 0, 1, 0, 0.595804, 0, -0.803129, -99.0015, 0, -2.77498 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="Ground9" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.00890106, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00890106, -39.192, 0, 31.887 )
+width = 20.5205
+height = 0.002
+depth = 86.0
+material = ExtResource( 2 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -11 )
+width = 6.0
+depth = 10.0
+material = ExtResource( 1 )
+
+[node name="Ramp_1" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, -13.9487, -0.106243, -0.0372558 )
+polygon = PoolVector2Array( 0, 0, -0.0260773, 5.5754, 2.86848, 2.1593, 6.95092, -0.00294662 )
+material = ExtResource( 1 )
+
+[node name="Ramp_2" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 10, -39.314, -0.106243, 36.7806 )
+polygon = PoolVector2Array( 0, 0, -0.0260773, 5.5754, 2.86848, 2.1593, 6.95092, -0.00294662 )
+material = ExtResource( 1 )
