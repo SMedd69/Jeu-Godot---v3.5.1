@@ -29,7 +29,7 @@ func shooting():
 			fire()
 		elif not reloading:
 			reload()
-	if Input.is_action_just_released("Reloading") and not reloading:
+	if Input.is_action_just_released("Reloading") and not reloading: #Touche ' A '
 		reload()
 
 func fire():

@@ -1,6 +1,9 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Prefabs/Player_Prefabs/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interactable/InteractableLightSwitch.gd" type="Script" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://Prefabs/Enemy/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 40, 2, 90 )
@@ -84,6 +87,16 @@ data = PoolVector3Array( 0, 1, 4.5, 3, -1, 4.5, -3, -1, 4.5, 0, 1, -4.5, -3, -1,
 [sub_resource type="SphereMesh" id=27]
 
 [sub_resource type="SphereShape" id=28]
+
+[sub_resource type="CubeMesh" id=31]
+
+[sub_resource type="SpatialMaterial" id=32]
+albedo_color = Color( 0.988235, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="CubeMesh" id=29]
+
+[sub_resource type="ConcavePolygonShape" id=30]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
 [node name="Map" type="Spatial"]
 
@@ -340,14 +353,35 @@ shape = SubResource( 16 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01084, 0 )
 
-[node name="Enemy" type="StaticBody" parent="." groups=["Enemies"]]
+[node name="Alberto" type="StaticBody" parent="." groups=["Enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06428, 3.40114, 15.2925 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Enemy"]
+[node name="MeshInstance" type="MeshInstance" parent="Alberto"]
 mesh = SubResource( 27 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Enemy"]
+[node name="CollisionShape" type="CollisionShape" parent="Alberto"]
 shape = SubResource( 28 )
+
+[node name="Glasses" type="MeshInstance" parent="Alberto"]
+transform = Transform( 0.435577, 0, 0, 0, 0.110271, 0, 0, 0, 0.319664, 0.0445836, 0.512132, -0.59424 )
+mesh = SubResource( 31 )
+material/0 = SubResource( 32 )
+
+[node name="SpotLight" type="SpotLight" parent="Alberto/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, 0.451265, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
+
+[node name="SpotLight2" type="SpotLight" parent="Alberto/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, -0.505526, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
 
 [node name="Enflure" type="StaticBody" parent="." groups=["Enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76234, 3.40114, -75.4538 )
@@ -358,6 +392,27 @@ mesh = SubResource( 27 )
 [node name="CollisionShape" type="CollisionShape" parent="Enflure"]
 shape = SubResource( 28 )
 
+[node name="Glasses" type="MeshInstance" parent="Enflure"]
+transform = Transform( 0.435577, 0, 0, 0, 0.110271, 0, 0, 0, 0.319664, 0.0445836, 0.512132, -0.59424 )
+mesh = SubResource( 31 )
+material/0 = SubResource( 32 )
+
+[node name="SpotLight" type="SpotLight" parent="Enflure/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, 0.451265, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
+
+[node name="SpotLight2" type="SpotLight" parent="Enflure/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, -0.505526, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
+
 [node name="PourritureHehe" type="StaticBody" parent="." groups=["Enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2497, 3.40114, 54.9411 )
 
@@ -366,6 +421,27 @@ mesh = SubResource( 27 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PourritureHehe"]
 shape = SubResource( 28 )
+
+[node name="Glasses" type="MeshInstance" parent="PourritureHehe"]
+transform = Transform( 0.435577, 0, 0, 0, 0.110271, 0, 0, 0, 0.319664, 0.0445836, 0.512132, -0.59424 )
+mesh = SubResource( 31 )
+material/0 = SubResource( 32 )
+
+[node name="SpotLight" type="SpotLight" parent="PourritureHehe/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, 0.451265, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
+
+[node name="SpotLight2" type="SpotLight" parent="PourritureHehe/Glasses"]
+transform = Transform( -2.2958, 0, -1.47295e-07, 0, 9.06853, 0, 2.00706e-07, 0, -3.12829, -0.505526, 0, -2.5358 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 9.0
+light_specular = 3.527
+spot_range = 0.539
+spot_angle = 13.0467
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -378,5 +454,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -278.0
 margin_top = -88.0
+custom_colors/font_color = Color( 0.631373, 0.372549, 0.0352941, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 text = "Ammo
 2/2"
+align = 2
+
+[node name="InteractionLabel" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -52.0
+text = "Appuie sur la touche : N  pour interragir"
+align = 1
+valign = 1
+
+[node name="Interrupteur" type="MeshInstance" parent="."]
+transform = Transform( 0.310547, 0, 0.127629, 0, 0.264876, 0, -0.103299, 0, 0.383688, -8.78623, 2.3271, -1.06956 )
+layers = 2
+mesh = SubResource( 29 )
+
+[node name="StaticBody" type="StaticBody" parent="Interrupteur"]
+collision_layer = 2
+script = ExtResource( 2 )
+light = NodePath("../../DirectionalLight")
+on_by_default = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Interrupteur/StaticBody"]
+shape = SubResource( 30 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -318.22, -63.5285, -271.141 )
+light_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+light_energy = 2.468
+shadow_enabled = true
+shadow_color = Color( 0.717647, 0.705882, 0.705882, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3812, 2.40693, 41.8018 )
+
+[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -201.961, 2.40693, 121.16 )
+
+[node name="Enemy3" parent="." groups=["Enemies"] instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128.923, 2.40693, 140.034 )
+
+[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -105.913, 2.40693, -219.506 )
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95832, 2.40693, -88.8736 )
